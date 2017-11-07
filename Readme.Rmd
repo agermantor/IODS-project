@@ -1,0 +1,6 @@
+#About the course:
+Utilizing and sharing data is an essential skill for researchers in all fields. During this course we use open data sets from different sources and learn to prepare them for different analyses. You will explore, analyse and interpret data from real world applications.
+#Link to my Github
+
+[link] (https://agtorresmora.github.io/IODS-project/)
+

@@ -1,4 +1,9 @@
 
 # About the project
+We must discover the patterns hidden behind numbers in matrices and arrays. We are not afraid of coding, recoding, programming, or modelling. We want to visualize, analyze, interpret, understand, and communicate. These are the core themes of Open Data Science (Open Data - Open Science - Data Science) 
 
-*Write a short description about the course and add a link to your github repository here. This is an R markdown (.Rmd) file so you can use R markdown syntax. See the 'Useful links' page in the mooc area (chapter 1) for instructions.*
+## Link to my Github
+
+[link] (https://agtorresmora.github.io/IODS-project/)
+
+ 
