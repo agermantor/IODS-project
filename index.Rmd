@@ -1,7 +1,7 @@
 ---
 title: "IODS course project"
-author: ALVARO GERMAN TORRES MORA
-  output:
+author: "ALVARO GERMAN TORRES MORA"
+output:
   html_document:
     theme: cosmo
     toc: true
