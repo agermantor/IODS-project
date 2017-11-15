@@ -1,6 +1,6 @@
-# Insert chapter 2 title here
+#  chapter 2 
 
-*Describe the work you have done this week and summarize your learning.*
+
 
 1. The file learning 2014 contains 166 observations of 7 variables (gender, Age, Attitude, deep, stra, surf, Points).
 2.Learning2014 shows a statistics whose purpose is to measure the target variable Points, using variables such as gender, age, attitude and approaches such as deep, surface and strategic
