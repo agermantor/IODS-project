@@ -78,11 +78,11 @@ my_model <- lm(Points ~ Attitude + gender, data = learning2014)
 my_model
 
 summary(my_model)
-#Residuals or errors oscilate between 2 and -3 and are closely overrepresented between 0.01 and 0.03 of the x axis
+#Residuals or errors oscilate between 10.612 and -17.1724 and are closely overrepresented between 0.01 and 0.03 of the x axis
 #Exercise 4
 summary(my_model)
 #It seems that variables gender attitude and Points are correlated to the target points. Standard errors are equal to 0.0595 (Attitude) and 0.9157 (gender). Since Pr value is very low for attitude (8.21e-09) there is a strong correlation with the target. 
 #Exercise 5
 plot(my_model)
 
-#Residuals or errors oscilate between -20 and 10 which. In order to make the model such residuals should be minimized
+#Residuals or errors oscilate between 10.612 and -17.1724. In order to make the model such residuals should be minimized. The leverage turns the errors towards 0 in the red line.
