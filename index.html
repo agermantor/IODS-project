@@ -144,6 +144,15 @@ $(document).ready(function () {
 <li><a href="#link-to-my-github">Link to my Github</a></li>
 </ul></li>
 <li><a href="#chapter-2">chapter 2</a></li>
+<li><a href="#chapter-3">chapter 3</a></li>
+<li><a href="#analysis">Analysis</a></li>
+<li><a href="#step-n.-2">Step N. 2</a></li>
+<li><a href="#the-data-set-contains-35-variables-and-382-observations.-the-dataset-shows-interaction-between-alcohol-consumption-and-diverse-items-such-as-sex-age-address-and-others">The data set contains 35 variables and 382 observations. The dataset shows interaction between alcohol consumption and diverse items such as sex, age, address and others</a></li>
+<li><a href="#code">code:</a></li>
+<li><a href="#step-n.-3.">Step N. 3.</a></li>
+<li><a href="#variables-failures-absences-sex-and-famsize-are-chosen-in-the-model-for-understanding-high-consumption-of-alcohol.-all-the-variable-have-statistically-significant-relationship-with-the-alcohol-consumption.">Variables failures, absences, sex and famsize are chosen in the model for understanding high consumption of alcohol. All the variable have statistically significant relationship with the alcohol consumption.</a></li>
+<li><a href="#code-1">code:</a></li>
+<li><a href="#exercise-n.-4">Exercise N. 4</a></li>
 </ul>
 </div>
 
@@ -163,6 +172,36 @@ $(document).ready(function () {
 <li>The file learning 2014 contains 166 observations of 7 variables (gender, Age, Attitude, deep, stra, surf, Points). 2.Learning2014 shows a statistics whose purpose is to measure the target variable Points, using variables such as gender, age, attitude and approaches such as deep, surface and strategic 3.Residuals or errors oscilate between 10.612 and -17.1724 and are closely overrepresented between 0.01 and 0.03 of the x axis. In order to improve the model such errors must be minimized 4.It seems that variables gender attitude and Points are correlated to the target points. Standard errors are equal to 0.0595 (Attitude) and 0.9157 (gender). Since Pr value is very low for attitude (8.21e-09) there is a strong correlation with the target. 5.Residuals or errors oscilate between 10.612 and -17.1724. In order to make the model such residuals should be minimized. The leverage turns the errors towards 0 in the red line.</li>
 </ol>
 <hr />
+</div>
+<div id="chapter-3" class="section level1">
+<h1>chapter 3</h1>
+</div>
+<div id="analysis" class="section level1">
+<h1>Analysis</h1>
+</div>
+<div id="step-n.-2" class="section level1">
+<h1>Step N. 2</h1>
+</div>
+<div id="the-data-set-contains-35-variables-and-382-observations.-the-dataset-shows-interaction-between-alcohol-consumption-and-diverse-items-such-as-sex-age-address-and-others" class="section level1">
+<h1>The data set contains 35 variables and 382 observations. The dataset shows interaction between alcohol consumption and diverse items such as sex, age, address and others</h1>
+</div>
+<div id="code" class="section level1">
+<h1>code:</h1>
+<p>library(dplyr); library(ggplot2) alchm &lt;- read.csv(“create_alc.csv”) alchm glimpse(alchm)</p>
+</div>
+<div id="step-n.-3." class="section level1">
+<h1>Step N. 3.</h1>
+</div>
+<div id="variables-failures-absences-sex-and-famsize-are-chosen-in-the-model-for-understanding-high-consumption-of-alcohol.-all-the-variable-have-statistically-significant-relationship-with-the-alcohol-consumption." class="section level1">
+<h1>Variables failures, absences, sex and famsize are chosen in the model for understanding high consumption of alcohol. All the variable have statistically significant relationship with the alcohol consumption.</h1>
+</div>
+<div id="code-1" class="section level1">
+<h1>code:</h1>
+<p>m &lt;- glm(high_use ~ failures + absences + sex + famsize, data = alc, family = “binomial”) print(m) summary(m)</p>
+</div>
+<div id="exercise-n.-4" class="section level1">
+<h1>Exercise N. 4</h1>
+<p>plot(m) boxplot(m)</p>
 </div>
 
 
