@@ -1,6 +1,5 @@
 #Week 4. Data wrangling. Álvaro Germán Torres Mora
-library(dplyr)
-library(tidyr)
+
 #2. Read the "Human development" and "Gender inequality" datas into R. Here are the links to the datasets:
 hd <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_2218/datasets/human_development.csv", stringsAsFactors = F)
 gii <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_2218/datasets/gender_inequality.csv", stringsAsFactors = F, na.strings = "..")
