@@ -153,17 +153,26 @@ $(document).ready(function () {
 <li><a href="#variables-failures-absences-sex-and-famsize-are-chosen-in-the-model-for-understanding-high-consumption-of-alcohol.-all-the-variable-have-statistically-significant-relationship-with-the-alcohol-consumption.">Variables failures, absences, sex and famsize are chosen in the model for understanding high consumption of alcohol. All the variable have statistically significant relationship with the alcohol consumption.</a></li>
 <li><a href="#code-1">code:</a></li>
 <li><a href="#exercise-n.-4">Exercise N. 4</a></li>
+<li><a href="#week-4.-clustering-and-classification.-alvaro-german-torres-mora">Week 4. Clustering and classification. Álvaro Germán Torres Mora</a></li>
 <li><a href="#analysis-exercises">Analysis exercises</a></li>
-<li><a href="#step-2.-loading-the-data-and-exploring-it">Step 2. Loading the data and exploring it</a></li>
-<li><a href="#exploring-the-dataset">exploring the dataset</a></li>
+<li><a href="#step-2.-loading-the-data-and-exploring-it">STEP 2. Loading the data and exploring it</a></li>
 <li><a href="#boston-dataset-describes-data-on-housing-values-in-suburbs-of-boston.-it-has-506-observations-and-14-variables-crim-zn-indus-chas-nox-rm-age-dis-rad-tax-ptratio-black-lstat-medv">Boston dataset describes data on Housing Values in Suburbs of Boston. It has 506 observations and 14 variables (crim, zn, indus, chas, nox, rm, age, dis, rad, tax, ptratio, black, lstat, medv)</a></li>
-<li><a href="#step-3.-graphical-overview-of-the-data">Step 3. Graphical overview of the data</a></li>
-<li><a href="#step-4">Step 4</a></li>
+<li><a href="#code-2">Code:</a></li>
+<li><a href="#exploring-the-dataset">exploring the dataset</a></li>
+<li><a href="#code-3">code:</a></li>
+<li><a href="#step-3.-graphical-overview-of-the-data">STEP 3. Graphical overview of the data</a></li>
+<li><a href="#the-picture-shows-the-correlation-between-the-different-variables.-it-seems-that-proportion-of-owner-occupied-units-built-prior-to-1940-is-srongly-close-to--1-negatively-correlated-to-the-weighted-mean-of-distances-to-boston-employment-centres.it-also-seems-that-proportion-of-non-retail-business-acres-is-strongly-close-to-1-correlated-to-nitrogen-oxides-concentration-parts-per-10-million.-by-looking-index-of-accessibility-to-radial-highways-and-full-value-property-tax-rate-per-10000-are-the-variables-the-most-correlated.">The picture shows the correlation between the different variables. It seems that proportion of owner-occupied units built prior to 1940 is (srongly = close to -1) negatively correlated to the weighted mean of distances to Boston employment centres.It also seems that proportion of non-retail business acres is (strongly = close to 1) correlated to nitrogen oxides concentration (parts per 10 million). By looking, index of accessibility to radial highways and full-value property-tax rate per $10,000 are the variables the most correlated.</a></li>
+<li><a href="#code-4">Code:</a></li>
+<li><a href="#step-4.-standardizing-the-dataset.">STEP 4. Standardizing the dataset.</a></li>
 <li><a href="#in-boston-there-are-no-negative-values-and-there-are-mean-values.-in-boston-scaled-there-are-negative-values-and-means-are-substracted-from-the-corresponding-column.-the-difference-is-divided-with-the-standard-deviation-of-the-variable.">In Boston there are no negative values and there are mean values. In boston scaled there are negative values and means are substracted from the corresponding column. The difference is divided with the standard deviation of the variable.</a></li>
-<li><a href="#step-5">Step 5</a></li>
-<li><a href="#step-6">Step 6</a></li>
-<li><a href="#since-we-have-defined-the-categories-of-crimes-we-have-the-variables-the-highest-aiming-for-both-th-correct-and-the-predicted-in-high.-this-means-that-the-prediction-based-on-the-model-works-quite-well.">Since we have defined the categories of crimes we have the variables the highest aiming for both th correct and the predicted in high. This means that the prediction based on the model works quite well.</a></li>
-<li><a href="#step-7">Step 7</a></li>
+<li><a href="#code-5">Code:</a></li>
+<li><a href="#step-5.-fitting-the-linear-discriminant-analysis-on-the-train-set.">STEP 5. Fitting the linear discriminant analysis on the train set.</a></li>
+<li><a href="#code-6">Code:</a></li>
+<li><a href="#step-6.-predicting-the-classes-with-the-lda-model-on-the-test-data.">STEP 6. Predicting the classes with the LDA model on the test data.</a></li>
+<li><a href="#code-7">Code:</a></li>
+<li><a href="#since-we-have-defined-the-categories-of-crimes-we-have-the-variables-the-highest-aiming-for-both-the-correct-and-the-predicted-in-high.-this-means-that-the-prediction-based-on-the-model-works-quite-well.">Since we have defined the categories of crimes we have the variables the highest aiming for both the correct and the predicted in high. This means that the prediction based on the model works quite well.</a></li>
+<li><a href="#step-7.-k-means-algorithm-on-the-dataset">STEP 7. k-means algorithm on the dataset</a></li>
+<li><a href="#code-8">Code:</a></li>
 </ul>
 </div>
 
@@ -214,48 +223,73 @@ $(document).ready(function () {
 <h1>Exercise N. 4</h1>
 <p>plot(m) boxplot(m) ***</p>
 </div>
+<div id="week-4.-clustering-and-classification.-alvaro-german-torres-mora" class="section level1">
+<h1>Week 4. Clustering and classification. Álvaro Germán Torres Mora</h1>
+</div>
 <div id="analysis-exercises" class="section level1">
 <h1>Analysis exercises</h1>
 </div>
 <div id="step-2.-loading-the-data-and-exploring-it" class="section level1">
-<h1>Step 2. Loading the data and exploring it</h1>
-<p>library(MASS) data(“Boston”)</p>
-</div>
-<div id="exploring-the-dataset" class="section level1">
-<h1>exploring the dataset</h1>
-<p>str(Boston) dim(Boston)</p>
+<h1>STEP 2. Loading the data and exploring it</h1>
 </div>
 <div id="boston-dataset-describes-data-on-housing-values-in-suburbs-of-boston.-it-has-506-observations-and-14-variables-crim-zn-indus-chas-nox-rm-age-dis-rad-tax-ptratio-black-lstat-medv" class="section level1">
 <h1>Boston dataset describes data on Housing Values in Suburbs of Boston. It has 506 observations and 14 variables (crim, zn, indus, chas, nox, rm, age, dis, rad, tax, ptratio, black, lstat, medv)</h1>
 </div>
-<div id="step-3.-graphical-overview-of-the-data" class="section level1">
-<h1>Step 3. Graphical overview of the data</h1>
-<p>install.packages(“corrplot”) library(corrplot) library(dplyr) pairs(Boston) cor_matrix&lt;-cor(Boston) %&gt;% round(digits = 2) cor_matrix corrplot(cor_matrix, method=“circle”, type=“upper”, cl.pos=“b”, tl.pos=“d”, tl.cex = 0.6) #The picture shows the correlation between the different variables. It seems that proportion of owner-occupied units built prior to 1940 is (srongly = close to -1) negatively correlated to the weighted mean of distances to Boston employment centres.It also seems that proportion of non-retail business acres is (strongly = close to 1) correlated to nitrogen oxides concentration (parts per 10 million). By looking, index of accessibility to radial highways and full-value property-tax rate per $10,000 are the variables the most correlated.</p>
+<div id="code-2" class="section level1">
+<h1>Code:</h1>
+<p>library(MASS) data(“Boston”)</p>
 </div>
-<div id="step-4" class="section level1">
-<h1>Step 4</h1>
-<p>summary(Boston) boston_scaled &lt;- scale(Boston) summary(boston_scaled)</p>
+<div id="exploring-the-dataset" class="section level1">
+<h1>exploring the dataset</h1>
+</div>
+<div id="code-3" class="section level1">
+<h1>code:</h1>
+<p>str(Boston) dim(Boston)</p>
+</div>
+<div id="step-3.-graphical-overview-of-the-data" class="section level1">
+<h1>STEP 3. Graphical overview of the data</h1>
+</div>
+<div id="the-picture-shows-the-correlation-between-the-different-variables.-it-seems-that-proportion-of-owner-occupied-units-built-prior-to-1940-is-srongly-close-to--1-negatively-correlated-to-the-weighted-mean-of-distances-to-boston-employment-centres.it-also-seems-that-proportion-of-non-retail-business-acres-is-strongly-close-to-1-correlated-to-nitrogen-oxides-concentration-parts-per-10-million.-by-looking-index-of-accessibility-to-radial-highways-and-full-value-property-tax-rate-per-10000-are-the-variables-the-most-correlated." class="section level1">
+<h1>The picture shows the correlation between the different variables. It seems that proportion of owner-occupied units built prior to 1940 is (srongly = close to -1) negatively correlated to the weighted mean of distances to Boston employment centres.It also seems that proportion of non-retail business acres is (strongly = close to 1) correlated to nitrogen oxides concentration (parts per 10 million). By looking, index of accessibility to radial highways and full-value property-tax rate per $10,000 are the variables the most correlated.</h1>
+</div>
+<div id="code-4" class="section level1">
+<h1>Code:</h1>
+<p>install.packages(“corrplot”) library(corrplot) library(dplyr) pairs(Boston) cor_matrix&lt;-cor(Boston) %&gt;% round(digits = 2) cor_matrix corrplot(cor_matrix, method=“circle”, type=“upper”, cl.pos=“b”, tl.pos=“d”, tl.cex = 0.6)</p>
+</div>
+<div id="step-4.-standardizing-the-dataset." class="section level1">
+<h1>STEP 4. Standardizing the dataset.</h1>
 </div>
 <div id="in-boston-there-are-no-negative-values-and-there-are-mean-values.-in-boston-scaled-there-are-negative-values-and-means-are-substracted-from-the-corresponding-column.-the-difference-is-divided-with-the-standard-deviation-of-the-variable." class="section level1">
 <h1>In Boston there are no negative values and there are mean values. In boston scaled there are negative values and means are substracted from the corresponding column. The difference is divided with the standard deviation of the variable.</h1>
-<p>boston_scaled &lt;- as.data.frame(boston_scaled) boston_scaled summary(boston_scaled<span class="math inline">\(crim) bins &lt;- quantile(boston_scaled\)</span>crim) bins crime &lt;- cut(boston_scaled$crim, breaks = bins, include.lowest = TRUE, labels = c(“low”, “med_low”, “med_high”, “high”)) table(crime) boston_scaled &lt;- dplyr::select(boston_scaled, -crim) boston_scaled &lt;- data.frame(boston_scaled, crime) n &lt;- nrow(boston_scaled) ind &lt;- sample(n, size = n * 0.8) train &lt;- boston_scaled[ind,] test &lt;- boston_scaled[-ind,]</p>
 </div>
-<div id="step-5" class="section level1">
-<h1>Step 5</h1>
+<div id="code-5" class="section level1">
+<h1>Code:</h1>
+<p>summary(Boston) boston_scaled &lt;- scale(Boston) summary(boston_scaled) boston_scaled &lt;- as.data.frame(boston_scaled) boston_scaled summary(boston_scaled<span class="math inline">\(crim) bins &lt;- quantile(boston_scaled\)</span>crim) bins crime &lt;- cut(boston_scaled$crim, breaks = bins, include.lowest = TRUE, labels = c(“low”, “med_low”, “med_high”, “high”)) table(crime) boston_scaled &lt;- dplyr::select(boston_scaled, -crim) boston_scaled &lt;- data.frame(boston_scaled, crime) n &lt;- nrow(boston_scaled) ind &lt;- sample(n, size = n * 0.8) train &lt;- boston_scaled[ind,] test &lt;- boston_scaled[-ind,]</p>
+</div>
+<div id="step-5.-fitting-the-linear-discriminant-analysis-on-the-train-set." class="section level1">
+<h1>STEP 5. Fitting the linear discriminant analysis on the train set.</h1>
+</div>
+<div id="code-6" class="section level1">
+<h1>Code:</h1>
 <p>library(MASS) lda.fit &lt;- lda(crime ~ ., data = train) lda.arrows &lt;- function(x, myscale = 1, arrow_heads = 0.1, color = “orange”, tex = 0.75, choices = c(1,2)){ heads &lt;- coef(x) arrows(x0 = 0, y0 = 0, x1 = myscale * heads[,choices[1]], y1 = myscale * heads[,choices[2]], col=color, length = arrow_heads) text(myscale * heads[,choices], labels = row.names(heads), cex = tex, col=color, pos=3) }</p>
 <p>classes &lt;- as.numeric(train$crime) plot(lda.fit, dimen = 2, col = classes, pch = classes) lda.arrows(lda.fit, myscale = 1)</p>
 </div>
-<div id="step-6" class="section level1">
-<h1>Step 6</h1>
+<div id="step-6.-predicting-the-classes-with-the-lda-model-on-the-test-data." class="section level1">
+<h1>STEP 6. Predicting the classes with the LDA model on the test data.</h1>
+</div>
+<div id="code-7" class="section level1">
+<h1>Code:</h1>
 <p>correct_classes &lt;- test<span class="math inline">\(crime test &lt;- dplyr::select(test, -crime) lda.pred &lt;- predict(lda.fit, newdata = test) lda.pred table(correct = correct_classes, predicted = lda.pred\)</span>class)</p>
 </div>
-<div id="since-we-have-defined-the-categories-of-crimes-we-have-the-variables-the-highest-aiming-for-both-th-correct-and-the-predicted-in-high.-this-means-that-the-prediction-based-on-the-model-works-quite-well." class="section level1">
-<h1>Since we have defined the categories of crimes we have the variables the highest aiming for both th correct and the predicted in high. This means that the prediction based on the model works quite well.</h1>
+<div id="since-we-have-defined-the-categories-of-crimes-we-have-the-variables-the-highest-aiming-for-both-the-correct-and-the-predicted-in-high.-this-means-that-the-prediction-based-on-the-model-works-quite-well." class="section level1">
+<h1>Since we have defined the categories of crimes we have the variables the highest aiming for both the correct and the predicted in high. This means that the prediction based on the model works quite well.</h1>
 </div>
-<div id="step-7" class="section level1">
-<h1>Step 7</h1>
-<p>data(Boston) boston_scaled &lt;- scale(Boston) dist_eu &lt;- dist(boston_scaled) dist_eu</p>
-<p>km &lt;-kmeans(boston_scaled, centers = 3) pairs(boston_scaled, col = km<span class="math inline">\(cluster) set.seed(123) k_max &lt;- 10 twcss &lt;- sapply(1:k_max, function(k){kmeans(boston_scaled, k)\)</span>tot.withinss}) install.packages(“ggplot2”) library(“ggplot2”) # According to Datacamp K-means must include the number of clusters as an argument. Looking at the total cluster sum of squares (WCSS) when their number changes is a good method, paying attention to the drop of such a number. It seems that this is the case when we use: qplot(x = 1:k_max, y = twcss, geom = ‘line’) km &lt;-kmeans(boston_scaled, centers = 2) pairs(boston_scaled, col = km$cluster)</p>
+<div id="step-7.-k-means-algorithm-on-the-dataset" class="section level1">
+<h1>STEP 7. k-means algorithm on the dataset</h1>
+</div>
+<div id="code-8" class="section level1">
+<h1>Code:</h1>
+<p>data(Boston) boston_scaled &lt;- scale(Boston) dist_eu &lt;- dist(boston_scaled) dist_eu km &lt;-kmeans(boston_scaled, centers = 3) pairs(boston_scaled, col = km<span class="math inline">\(cluster) set.seed(123) k_max &lt;- 10 twcss &lt;- sapply(1:k_max, function(k){kmeans(boston_scaled, k)\)</span>tot.withinss}) install.packages(“ggplot2”) library(“ggplot2”) # According to Datacamp K-means must include the number of clusters as an argument. Looking at the total cluster sum of squares (WCSS) when their number changes is a good method, paying attention to the drop of such a number. It seems that this is the case when we use: #Code: qplot(x = 1:k_max, y = twcss, geom = ‘line’) km &lt;-kmeans(boston_scaled, centers = 2) pairs(boston_scaled, col = km$cluster) #Data from the same cluster have continuity and they approximate each other in the distributions.</p>
 </div>
 
 
