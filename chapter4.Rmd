@@ -89,5 +89,7 @@ library("ggplot2")
 qplot(x = 1:k_max, y = twcss, geom = 'line')
 km <-kmeans(boston_scaled, centers = 2)
 pairs(boston_scaled, col = km$cluster)
+
+
 #Data from the same cluster have continuity and they approximate each other in the distributions.
  
