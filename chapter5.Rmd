@@ -11,9 +11,11 @@ dim(human)
 #Step 3
 
 ```{r}
+library(tidyverse)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
 library(corrplot)
-
-library("ggplot2")
 ```
 
 
