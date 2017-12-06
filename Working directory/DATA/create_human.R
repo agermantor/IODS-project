@@ -12,7 +12,7 @@ summary(hd)
 summary(gii)
 #4.Look at the meta files and rename the variables with (shorter) descriptive names
 colnames(hd) <- c("HDIR", "CTRY", "HDI", "LIF.EXP.BIRTH", "EXPECT.EDUCATION", "MEANEDUCATION", "GNI.PC", "GNI-HDIR")
-colnames(gii) <- c("GIIR", "CTRY", "GII", "MAT.MORT.RATIO", "ADOL.BIRTH.RATE", "REPR.PARLIAMENT", "POP.SEC.EDUC.FEM", "POP.SEC.EDUC.MAL", "LAB.FOR.PART.FEM", "LAB.FOR.PART.MAL")
+colnames(gii) <- c("GIIR", "CTRY", "GII", "MAT.MORT.RATIO", "ADOL.BIRTH.RATE", "REPRF.PARLIAMENT", "POP.SEC.EDUC.FEM", "POP.SEC.EDUC.MAL", "LAB.FOR.PART.FEM", "LAB.FOR.PART.MAL")
 str(hd)
 str(gii)
 #5.Mutate the "Gender inequality" data and create two new variables
@@ -24,3 +24,36 @@ human <- inner_join(hd, gii, by = join_by)
 str(human)
 dim(human)
 write.csv(human, file = "human.csv", row.names = FALSE)
+
+#Week 5. Data wrangling. Álvaro Germán Torres Mora
+#1. Mutate the data: transform the Gross National Income (GNI) variable to numeric 
+library(stringr)
+library(dplyr)
+str(human$GNI.PC)
+GNIDEF <- str_replace(human$GNI.PC, pattern=",", replace ="") %>% as.numeric
+human <- mutate(human, GNIDEF)
+str(human$GNIDEF)
+
+#2. Excluding unneeded variables
+
+keep <- c("CTRY", "EDUCATION.RATIO", "LABOUR.RATIO", "LIF.EXP.BIRTH", "EXPECT.EDUCATION", "GNIDEF", "MAT.MORT.RATIO", "ADOL.BIRTH.RATE", "REPRF.PARLIAMENT")
+human <- select(human, one_of(keep))
+
+#3.Removing all rows with missing values
+
+complete.cases(human)
+data.frame(human[-1], comp = complete.cases(human))
+human_ <- filter(human, complete.cases(human))
+
+#4. Removing the observations which relate to regions instead of countries
+tail(human_, n=10)
+last <- nrow(human) -7
+human_ <- human_ [1:155,]
+
+#5. Defining the row names of the data by the country names and removing the country name column from the data
+rownames(human_) <- human_$CTRY
+human_ <- select(human_, -CTRY)
+str(human_)
+
+#Saving:
+write.table(human_, file = "human.csv", sep = ",", row.names = TRUE, col.names = TRUE)
