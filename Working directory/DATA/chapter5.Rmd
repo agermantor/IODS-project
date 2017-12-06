@@ -1,0 +1,5 @@
+#  chapter 2 
+
+human <- read.csv("/Users/alvaro german/Documents/GitHub/IODS-project/human.csv", header = TRUE, sep= ",")
+str(human)
+dim(human)
