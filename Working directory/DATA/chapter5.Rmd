@@ -16,12 +16,7 @@ library(GGally)
 library("ggplot2")
 ```
 
-```{r echo = FALSE}
-renderPlot({
- d <- get(input$data)
- plot(d)
-}) 
-```
+
 
 ```{r}
 pairs(human)
