@@ -1,4 +1,4 @@
-#  chapter 5. Dimensionality reduction techniques 
+#  chapter 5. Analysis. Dimensionality reduction techniques 
 # Step 1.
 ##The data set has information obtained by the United Nations Development Program (UNDP) on various relevant topics of Human development such as Education, labour, political participation, mortality and the like. The data set contains 8 variables and 155 observations
 
