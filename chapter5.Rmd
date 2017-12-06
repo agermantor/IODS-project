@@ -46,6 +46,8 @@ biplot(pca_humstd, choices = 1:2, cex = c(0.8,1), col = c("blue", "red"))
 
 ### It seems that the wider the distance of the variables (the degree of the angle), the more uncorrelated they are. For example, maternity mortality ratio and adolescent birth are very correlated whilst expected years of life at birth and labour ratio have less correlation
 
+#Step 6
+
 ```{r}
 library(FactoMineR)
 
