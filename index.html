@@ -173,6 +173,9 @@ $(document).ready(function () {
 <li><a href="#since-we-have-defined-the-categories-of-crimes-we-have-the-variables-the-highest-aiming-for-both-the-correct-and-the-predicted-in-high.-this-means-that-the-prediction-based-on-the-model-works-quite-well.">Since we have defined the categories of crimes we have the variables the highest aiming for both the correct and the predicted in high. This means that the prediction based on the model works quite well.</a></li>
 <li><a href="#step-7.-k-means-algorithm-on-the-dataset">STEP 7. k-means algorithm on the dataset</a></li>
 <li><a href="#code-8">Code:</a></li>
+<li><a href="#according-to-datacamp-k-means-must-include-the-number-of-clusters-as-an-argument.-looking-at-the-total-cluster-sum-of-squares-wcss-when-their-number-changes-is-a-good-method-paying-attention-to-the-drop-of-such-a-number.-it-seems-that-this-is-the-case-when-we-use">According to Datacamp K-means must include the number of clusters as an argument. Looking at the total cluster sum of squares (WCSS) when their number changes is a good method, paying attention to the drop of such a number. It seems that this is the case when we use:</a></li>
+<li><a href="#code-9">Code:</a></li>
+<li><a href="#data-from-the-same-cluster-have-continuity-and-they-approximate-each-other-in-the-distributions.">Data from the same cluster have continuity and they approximate each other in the distributions.</a></li>
 </ul>
 </div>
 
@@ -289,7 +292,17 @@ $(document).ready(function () {
 </div>
 <div id="code-8" class="section level1">
 <h1>Code:</h1>
-<p>data(Boston) boston_scaled &lt;- scale(Boston) dist_eu &lt;- dist(boston_scaled) dist_eu km &lt;-kmeans(boston_scaled, centers = 3) pairs(boston_scaled, col = km<span class="math inline">\(cluster) set.seed(123) k_max &lt;- 10 twcss &lt;- sapply(1:k_max, function(k){kmeans(boston_scaled, k)\)</span>tot.withinss}) install.packages(“ggplot2”) library(“ggplot2”) # According to Datacamp K-means must include the number of clusters as an argument. Looking at the total cluster sum of squares (WCSS) when their number changes is a good method, paying attention to the drop of such a number. It seems that this is the case when we use: #Code: qplot(x = 1:k_max, y = twcss, geom = ‘line’) km &lt;-kmeans(boston_scaled, centers = 2) pairs(boston_scaled, col = km$cluster) #Data from the same cluster have continuity and they approximate each other in the distributions.</p>
+<p>data(Boston) boston_scaled &lt;- scale(Boston) dist_eu &lt;- dist(boston_scaled) dist_eu km &lt;-kmeans(boston_scaled, centers = 3) pairs(boston_scaled, col = km<span class="math inline">\(cluster) set.seed(123) k_max &lt;- 10 twcss &lt;- sapply(1:k_max, function(k){kmeans(boston_scaled, k)\)</span>tot.withinss}) install.packages(“ggplot2”) library(“ggplot2”)</p>
+</div>
+<div id="according-to-datacamp-k-means-must-include-the-number-of-clusters-as-an-argument.-looking-at-the-total-cluster-sum-of-squares-wcss-when-their-number-changes-is-a-good-method-paying-attention-to-the-drop-of-such-a-number.-it-seems-that-this-is-the-case-when-we-use" class="section level1">
+<h1>According to Datacamp K-means must include the number of clusters as an argument. Looking at the total cluster sum of squares (WCSS) when their number changes is a good method, paying attention to the drop of such a number. It seems that this is the case when we use:</h1>
+</div>
+<div id="code-9" class="section level1">
+<h1>Code:</h1>
+<p>qplot(x = 1:k_max, y = twcss, geom = ‘line’) km &lt;-kmeans(boston_scaled, centers = 2) pairs(boston_scaled, col = km$cluster)</p>
+</div>
+<div id="data-from-the-same-cluster-have-continuity-and-they-approximate-each-other-in-the-distributions." class="section level1">
+<h1>Data from the same cluster have continuity and they approximate each other in the distributions.</h1>
 </div>
 
 
