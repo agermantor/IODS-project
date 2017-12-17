@@ -1,6 +1,6 @@
 #  chapter 5. Analysis. Dimensionality reduction techniques 
-# Step 1.
-##The data set has information obtained by the United Nations Development Program (UNDP) on various relevant topics of Human development such as Education, labour, political participation, mortality and the like. The data set contains 8 variables and 155 observations
+# Step 1. Loading the data
+##The data set has information obtained by the United Nations Development Program (UNDP) on various relevant topics of Human development such as Education, labour, political participation, mortality and the like. The data set contains 8 variables and 155 observations.
 
 ```{r} 
 human <- read.csv("~/GitHub/IODS-project/Working directory/DATA/human_.csv", header = TRUE, sep= ",")
@@ -8,21 +8,25 @@ str(human)
 dim(human)
 ```
 
-#Step 3
+#Step 2. Graphical overview
 
 ```{r}
+library(tidyverse)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
 library(corrplot)
-library(GGally)
-library("ggplot2")
 ```
 
 
 
 ```{r}
 pairs(human)
-cor_mat <- cor(human)%>%round(digits=2)
+cor_mat <- cor(human) %>% round(digits=2)
 corrplot(cor_mat, method="circle", type="upper", cl.pos="b", tl.pos="d", tl.cex = 0.6, title = "Correlation plot")
 ```
+
+
 ### According to the correlation plot, the more blue, the more correlated the variables are and the more red the more uncorrelated the variables are. Let큦 say for example that life expectancy at birth extremely uncorrelated to Maternity Mortality Ratio.
 
 # Step 3. principal component analysis (PCA)
@@ -30,38 +34,56 @@ corrplot(cor_mat, method="circle", type="upper", cl.pos="b", tl.pos="d", tl.cex 
 ```{r}
 pca_human <- prcomp(human)
 summary(pca_human)
-biplot(pca_human, choices = 1:2, cex = c(0.8,1), col = c("blue", "red"))
+biplot(pca_human, choices = 1:2, cex = c(0.8,1), col = c("gray", "red"))
 ```
 
-# Steps 4 and 5.Standardize the variables in the human data and repeat the above analysis
+### According to the graph (which Shows the variability captured by the principal components, with no standardization), our defined variable GINIDEF (originally GNI) is the more correlated since its highlighting. However, its behaviour is not easily connected with the other variables. 
+
+# Steps 4.Standardizing the variables in the human data and repeat the above analysis
+### Standardizing we get:
 
 ```{r}
 humstd <- scale(human) 
 pca_humstd <- prcomp(humstd)
 summary(pca_humstd)
-biplot(pca_humstd, choices = 1:2, cex = c(0.8,1), col = c("blue", "red"))
+biplot(pca_humstd, choices = 1:2, cex = c(0.8,1), col = c("gray", "red"))
 ```
+#Step 5. Interpreting the main componentes.
+### It seems that the wider the distance of the variables (the degree of the angle), the more uncorrelated they are. For example, maternity mortality ratio is very correlated to adolescent birth but not to Labour ratio. In the other side Education is very correlated to expected years of life are birth but not to representation in the parliament.
 
-### It seems that the wider the distance of the variables (the degree of the angle), the more uncorrelated they are. For example, maternity mortality ratio and adolescent birth are very correlated whilst expected years of life at birth and labour ratio have less correlation
-
-# Step 6
+#Step 6
+###Dataset Tea shows data on tea consumptions according to other variables (age, sport, friends, home and so on). This dataset contains 300 observations and 36 variables.
 ```{r}
 library(FactoMineR)
+
 data(tea) 
 str(tea)
 dim(tea)
+```
 
+###Let큦 now narrow our dataset following the model of data camp
+
+```{r}
 keep_columns <- c("Tea", "How", "how", "sugar", "where", "lunch")
 tea_time <- select(tea, one_of(keep_columns))
 summary(tea_time)
 str(tea_time)
 ```
 
-# visualize the dataset
+
+### this subdataset contains 300 observations and the 6 selected variables: Tea, How, how, sugar, where and lunch. Let큦 now explore it graphically. Let큦 now visualize the dataset.
+
 ```{r}
 gather(tea_time) %>% ggplot(aes(value)) + facet_wrap("key", scales = "free")  + geom_bar() + theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 8))
-
+```
+###Finally this is the multiple correspondence analysis:
+```{r}
 mca <- MCA(tea_time, graph = FALSE)
 summary(mca)
+```
+#Which plotted is like this:
+```{r}
 plot(mca, invisible=c("ind"), habillage = "quali")
 ```
+
+###At interpreting the graph it seems that for the variable "sugar", "sugar" and no "sugar" they are not strongly uncorrelated and they get close along x = 0. For the variable "where" "chain store" and "tea shop" get correlated and the same goes for "tea bag" and "unpackaged" in the variable "how"
