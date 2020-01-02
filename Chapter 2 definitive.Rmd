@@ -1,0 +1,55 @@
+#Chapter 2. Regression
+#Loading the data
+
+```{r setup, include=FALSE}
+learning2014 <- read.csv("Learning2014.csv")
+str(learning2014)
+dim(learning2014)
+```
+
+#The file learning 2014 contains 166 observations of 7 variables (gender, Age, Attitude, deep, stra, surf, Points)
+
+#Exercise 2. Exploration.
+```{r }
+library(GGally)
+library(ggplot2)
+p <- ggpairs(learning2014, mapping = aes(col = gender, alpha = 0.7), lower = list(combo = wrap("facethist", bins = 20)), title = "Figure 1. Graphical exploration.")
+p
+```
+
+# Learning2014 shows a statistics whose purpose is to measure the target variable Points, using variables such as gender, age, attitude and approaches such as deep, surface and strategic. The variables Attitude and points have the higher correlation (0.43). For this reason the variable Attitude should be included as a predictor in the model.
+
+#Exercise 3. 
+#Regression fitting 1 (trial)
+
+```{r }
+regression1 <- lm(Points ~ Attitude + Age + stra + surf, data = learning2014)
+summary(regression1)
+```
+
+# The model includes 4 predictor variables (Attitude, Age, stra, and surf) and one target (Points). The variable surf has no statistically significant relationship with the target variable.
+
+#Exercise 4
+#Regression fitting 2 (final)
+
+```{r }
+regression2 <- lm(Points ~ Attitude + Age + stra, data = learning2014)
+summary(regression2)
+```
+
+# Since the variable surf had not statistical significance, it was removed from this model. For every point in Attitude there is 0.34808 increase in points. The model explains 20.37% of the variance.
+#Exercise 5
+
+```{r }
+par(mfrow = c(2,2))
+plot(regression2, which = c(1, 2, 5))
+```
+
+#The following conclusions are drawn from the residual analysis:
+
+#The Residuals vs Fitted shows a constant variance which lacks any pattern.
+#The Normal QQ-polt shows that errors are normally distributed.
+#The Residuals vs Leverage shows that leverages are below 0.06. This makes a good model fitting.
+
+#Final remarks
+#In this regression model I analyzed the relationship between the Attitude and age of the students and the points they obtain (I also included the variable stra). The model confirms that the attitude of the students is positively correlated to the obtained points. The model explains 20.37% of the variance, which means that other variables are still needed.
